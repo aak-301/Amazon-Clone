@@ -1,6 +1,7 @@
 import 'package:amazonclone/common/widgets/custom_button.dart';
 import 'package:amazonclone/common/widgets/custom_textfield.dart';
 import 'package:amazonclone/constants/global_variables.dart';
+import 'package:amazonclone/features/auth/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 enum Auth { signin, signup }
@@ -18,16 +19,33 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
   final _signupFormKey = GlobalKey<FormState>();
   final _signinFormKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
     super.dispose();
+  }
+
+  void signupUser() {
+    authService.signupUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      name: _nameController.text,
+      context: context,
+    );
+  }
+
+  void signinUser() {
+    authService.signinUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      context: context,
+    );
   }
 
   @override
@@ -91,7 +109,13 @@ class _AuthScreenState extends State<AuthScreen> {
                           hintText: 'Password',
                         ),
                         const SizedBox(height: 10),
-                        CustomButton(text: "Sign Up", onTap: () {}),
+                        CustomButton(
+                            text: "Sign Up",
+                            onTap: () {
+                              if (_signupFormKey.currentState!.validate()) {
+                                signupUser();
+                              }
+                            }),
                       ],
                     ),
                   ),
@@ -136,7 +160,13 @@ class _AuthScreenState extends State<AuthScreen> {
                           hintText: 'Password',
                         ),
                         const SizedBox(height: 10),
-                        CustomButton(text: "Sign In", onTap: () {}),
+                        CustomButton(
+                            text: "Sign In",
+                            onTap: () {
+                              if (_signinFormKey.currentState!.validate()) {
+                                signinUser();
+                              }
+                            }),
                       ],
                     ),
                   ),
