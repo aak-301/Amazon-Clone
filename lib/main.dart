@@ -1,14 +1,45 @@
 import 'package:amazonclone/constants/global_variables.dart';
 import 'package:amazonclone/features/auth/screens/auth_screen.dart';
+import 'package:amazonclone/features/auth/services/auth_service.dart';
+import 'package:amazonclone/features/home/screens/home_screen.dart';
+import 'package:amazonclone/providers/user_provider.dart';
 import 'package:amazonclone/router.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'common/widgets/bottom_bar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+    ),
+  ], child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+  bool isLoading = true;
+
+  void init(BuildContext context) async {
+    await authService.getUserData(context);
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    init(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +57,18 @@ class MyApp extends StatelessWidget {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const AuthScreen(),
+      home: isLoading
+          ? const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            )
+          : Provider.of<UserProvider>(context).user.token.isNotEmpty
+              ? const BottomBar()
+              : const AuthScreen(),
     );
   }
 }
+
+
+//  3:36:43
