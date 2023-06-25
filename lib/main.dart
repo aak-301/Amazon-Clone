@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'common/widgets/bottom_bar.dart';
+import 'features/admin/screens/admin_screen.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -63,7 +64,9 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : Provider.of<UserProvider>(context).user.token.isNotEmpty
-              ? const BottomBar()
+              ? Provider.of<UserProvider>(context).user.type == 'user'
+                  ? const BottomBar()
+                  : const AdminScreen()
               : const AuthScreen(),
     );
   }
