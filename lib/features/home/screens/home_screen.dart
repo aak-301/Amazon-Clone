@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/global_variables.dart';
 import '../widgets/address_box.dart';
+import '../widgets/top_categories.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -93,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           AddressBox(),
           SizedBox(height: 10),
+          TopCategories(),
         ],
       ),
     );
