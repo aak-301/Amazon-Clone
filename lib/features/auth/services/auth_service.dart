@@ -59,9 +59,6 @@ class AuthService {
     required String password,
     required BuildContext context,
   }) async {
-    print("=============");
-    print(email);
-    print(password);
     try {
       http.Response res = await http.post(
         Uri.parse('$uri/api/signin'),
