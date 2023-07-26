@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:amazonclone/common/widgets/custom_button.dart';
 import 'package:amazonclone/common/widgets/custom_textfield.dart';
+import 'package:amazonclone/features/admin/services/admin_services.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -34,6 +35,22 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   String category = 'Mobiles';
   List<File> images = [];
+  final AdminServices adminServices = AdminServices();
+  final _addProductFormKey = GlobalKey<FormState>();
+
+  void sellProuct() {
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+        context: context,
+        name: productNameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        quantity: double.parse(quantityController.text),
+        category: category,
+        image: images,
+      );
+    }
+  }
 
   void selectImaegs() async {
     final res = await picImages();
@@ -72,6 +89,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
@@ -166,7 +184,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                CustomButton(text: 'Sell', onTap: () {}),
+                CustomButton(
+                  text: 'Sell',
+                  onTap: sellProuct,
+                ),
               ],
             ),
           ),
