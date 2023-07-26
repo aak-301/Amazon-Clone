@@ -13,7 +13,11 @@ import '../../../constants/utils.dart';
 
 class AddProductScreen extends StatefulWidget {
   static const String routeName = '/add-product';
-  const AddProductScreen({super.key});
+  final VoidCallback? refresh;
+  const AddProductScreen({
+    super.key,
+    this.refresh,
+  });
 
   @override
   State<AddProductScreen> createState() => _AddProductScreenState();
