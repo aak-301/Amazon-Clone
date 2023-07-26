@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
 
 // init
 const app = express();
@@ -10,11 +11,10 @@ const DB =
 
 //middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(authRouter);
+app.use(adminRouter);
 
-//connection
-//  username: aakash
-// password:aakas_301
 mongoose
   .connect(DB)
   .then(() => {

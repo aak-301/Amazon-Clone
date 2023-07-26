@@ -24,3 +24,5 @@ const admin = async (req, res, next) => {
     res.status(500).json({ error: e.messae });
   }
 };
+
+module.exports = admin;
