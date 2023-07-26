@@ -20,19 +20,15 @@ class Product {
   });
 
   Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
-
-    result.addAll({'name': name});
-    result.addAll({'description': description});
-    result.addAll({'quantity': quantity});
-    result.addAll({'images': images});
-    result.addAll({'category': category});
-    result.addAll({'price': price});
-    if (id != null) {
-      result.addAll({'id': id});
-    }
-
-    return result;
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'images': images,
+      'category': category,
+      'price': price,
+      'quantity': quantity,
+    };
   }
 
   factory Product.fromMap(Map<String, dynamic> map) {
