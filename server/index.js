@@ -21,7 +21,7 @@ app.use(adminRouter);
 app.use(userRouter);
 
 mongoose
-  .connect(DB)
+  .connect("mongodb+srv://aakash:aakas_301@cluster0.fzs30ay.mongodb.net/?retryWrites=true&w=majority")
   .then(() => {
     console.log("Db Connection succesfull");
   })
