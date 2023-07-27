@@ -3,6 +3,7 @@ import 'package:amazonclone/features/auth/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'common/widgets/bottom_bar.dart';
+import 'features/home/screens/category_details_screen.dart';
 import 'features/home/screens/home_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -36,6 +37,17 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: ((_) {
           return const AddProductScreen();
+        }),
+      );
+
+    case CategoryDetailsScreen.routeName:
+      var category = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: ((_) {
+          return CategoryDetailsScreen(
+            category: category,
+          );
         }),
       );
 
