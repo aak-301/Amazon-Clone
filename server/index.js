@@ -15,9 +15,9 @@ const DB = process.env.MONGO_URL;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(productRouter);
 app.use(authRouter);
 app.use(adminRouter);
+app.use(productRouter);
 app.use(userRouter);
 
 mongoose
@@ -29,6 +29,6 @@ mongoose
     console.log(e);
   });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Listening on port ${PORT}`);
 });

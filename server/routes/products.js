@@ -1,18 +1,8 @@
 const express = require("express");
-const {Product} = require("../models/product");
+const { Product } = require("../models/product");
 const auth = require("../middleware/auth");
 
 const productRouter = express.Router();
-
-productRouter.get("/", async (req, res) => {
-  try {
-    const products = await Product.find();
-    return res.json(products);
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
-});
-
 
 productRouter.get("/api/products/", auth, async (req, res) => {
   try {
