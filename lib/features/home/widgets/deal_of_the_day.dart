@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../common/widgets/loader.dart';
+import '../../../models/product.dart';
+import '../../product_details/screens/product_details_screen.dart';
+import '../services/home_services.dart';
+
 class DealOfTheDay extends StatefulWidget {
   const DealOfTheDay({super.key});
 
@@ -8,87 +13,99 @@ class DealOfTheDay extends StatefulWidget {
 }
 
 class _DealOfTheDayState extends State<DealOfTheDay> {
+  Product? product;
+  final HomeServices homeServices = HomeServices();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDealOfDay();
+  }
+
+  void fetchDealOfDay() async {
+    product = await homeServices.fetchDealOfDay(context: context);
+    setState(() {});
+  }
+
+  void navigateToDetailScreen() {
+    Navigator.pushNamed(
+      context,
+      ProductDetailScreen.routeName,
+      arguments: product,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(left: 10, top: 15),
-          child: const Text(
-            'Deal of the Day',
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-        ),
-        Image.network(
-          "https://cdn.vox-cdn.com/uploads/chorus_asset/file/24371433/236492_MacBook_Pro_16__2023__AKrales_0141.jpg",
-          height: 235,
-          fit: BoxFit.fitHeight,
-        ),
-        Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(
-            left: 15,
-          ),
-          child: const Text(
-            'Rs. 89,000',
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-        ),
-        Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(left: 15, top: 5, right: 40),
-          child: const Text(
-            'Mac Book',
-            maxLines: 2,
-            style: TextStyle(
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.network(
-                  fit: BoxFit.fitHeight,
-                  width: 100,
-                  height: 100,
-                  'https://5.imimg.com/data5/SELLER/Default/2022/11/FH/CG/IX/97646359/apple-macbook-laptop.jpg'),
-              Image.network(
-                  fit: BoxFit.fitHeight,
-                  width: 100,
-                  height: 100,
-                  'https://imgeng.jagran.com/images/2023/apr/best%20apple%20laptops%20price%20in%20India1682674778272.jpg'),
-              Image.network(
-                  fit: BoxFit.fitHeight,
-                  width: 100,
-                  height: 100,
-                  'https://5.imimg.com/data5/SELLER/Default/2022/11/FH/CG/IX/97646359/apple-macbook-laptop.jpg'),
-              Image.network(
-                  fit: BoxFit.fitHeight,
-                  width: 100,
-                  height: 100,
-                  'https://imgeng.jagran.com/images/2023/apr/best%20apple%20laptops%20price%20in%20India1682674778272.jpg'),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(15),
-          alignment: Alignment.topLeft,
-          child: Text(
-            'See all deals',
-            style: TextStyle(
-              color: Colors.cyan[800],
-            ),
-          ),
-        ),
-      ],
-    );
+    return product == null
+        ? const Loader()
+        : product!.name.isEmpty
+            ? const SizedBox()
+            : GestureDetector(
+                onTap: navigateToDetailScreen,
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.only(left: 10, top: 15),
+                      child: const Text(
+                        'Deal of the day',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    Image.network(
+                      product!.images[0],
+                      height: 235,
+                      fit: BoxFit.fitHeight,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 15),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Rs ${product!.price}',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      padding:
+                          const EdgeInsets.only(left: 15, top: 5, right: 40),
+                      child: Text(
+                        product!.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: product!.images
+                            .map(
+                              (e) => Image.network(
+                                e,
+                                fit: BoxFit.fitWidth,
+                                width: 100,
+                                height: 100,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ).copyWith(left: 15),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'See all deals',
+                        style: TextStyle(
+                          color: Colors.cyan[800],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
   }
 }
