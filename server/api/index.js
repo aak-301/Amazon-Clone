@@ -2,10 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv').config();
 
-const authRouter = require("./routes/auth");
-const adminRouter = require("./routes/admin");
-const productRouter = require("./routes/products");
-const userRouter = require("./routes/user");
+const authRouter = require("../routes/admin");
+const adminRouter = require("../routes/admin");
+const productRouter = require("../routes/products");
+const userRouter = require("../routes/user");
 
 // init
 const app = express();
