@@ -1,3 +1,4 @@
+import 'package:amazonclone/features/search/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/global_variables.dart';
@@ -15,6 +16,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void navigateToSearchScreen(String query) {
+    Navigator.pushNamed(
+      context,
+      SearchScreen.routeName,
+      arguments: query,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
+                      onFieldSubmitted: navigateToSearchScreen,
                       decoration: InputDecoration(
                         prefix: InkWell(
                           onTap: () {},
@@ -92,8 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body:const SingleChildScrollView(
-        child:  Column(
+      body: const SingleChildScrollView(
+        child: Column(
           children: [
             AddressBox(),
             SizedBox(height: 10),
