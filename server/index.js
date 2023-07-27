@@ -15,9 +15,9 @@ const DB = process.env.MONGO_URL;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(productRouter);
 app.use(authRouter);
 app.use(adminRouter);
-app.use(productRouter);
 app.use(userRouter);
 
 mongoose
