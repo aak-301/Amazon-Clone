@@ -62,7 +62,7 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                       padding: const EdgeInsets.only(left: 15),
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'Rs ${product!.price}',
+                        '₹${product!.price}',
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
