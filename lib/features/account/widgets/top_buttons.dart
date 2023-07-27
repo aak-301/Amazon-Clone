@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../services/account_services.dart';
 import 'account_button.dart';
 
 class TopButtons extends StatefulWidget {
@@ -17,7 +18,7 @@ class _TopButtonsState extends State<TopButtons> {
         Row(
           children: [
             AccountButton(
-              text: 'Your Order',
+              text: 'Your Orders',
               onTap: () {},
             ),
             AccountButton(
@@ -31,7 +32,7 @@ class _TopButtonsState extends State<TopButtons> {
           children: [
             AccountButton(
               text: 'Log Out',
-              onTap: () {},
+              onTap: () => AccountServices().logOut(context),
             ),
             AccountButton(
               text: 'Your Wish List',

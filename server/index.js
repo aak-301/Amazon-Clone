@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
+
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
 const productRouter = require("./routes/products");
@@ -8,8 +10,7 @@ const userRouter = require("./routes/user");
 // init
 const app = express();
 const PORT = 3000;
-const DB =
-  "mongodb+srv://aakash:aakas_301@cluster0.fzs30ay.mongodb.net/?retryWrites=true&w=majority";
+const DB = process.env.MONGO_URL;
 
 //middleware
 app.use(express.json());
