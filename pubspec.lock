@@ -326,7 +326,7 @@ packages:
     source: hosted
     version: "2.1.7"
   pay:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: pay
       sha256: f32c846b1373ae46cfca47298d89ebfa865927ed226b40e1f5fc22c68dc7b018
