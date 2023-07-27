@@ -15,10 +15,11 @@ const DB = process.env.MONGO_URL;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(authRouter);
-app.use(adminRouter);
-app.use(productRouter);
-app.use(userRouter);
+
+app.use(`api/${authRouter}`);
+app.use(`api/${adminRouter}`);
+app.use(`api/${productRouter}`);
+app.use(`api/${userRouter}`);
 
 mongoose
   .connect(DB)
