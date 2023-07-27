@@ -14,7 +14,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../common/widgets/bottom_bar.dart';
 import '../../../constants/error_handling.dart';
 import '../../../providers/user_provider.dart';
-import '../../home/screens/home_screen.dart';
 
 class AuthService {
   // signup user

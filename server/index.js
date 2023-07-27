@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv").config();
+const dotenv = require('dotenv').config();
 
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
@@ -15,11 +15,10 @@ const DB = process.env.MONGO_URL;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(`api/${authRouter}`);
-app.use(`api/${adminRouter}`);
-app.use(`api/${productRouter}`);
-app.use(`api/${userRouter}`);
+app.use(authRouter);
+app.use(adminRouter);
+app.use(productRouter);
+app.use(userRouter);
 
 mongoose
   .connect(DB)
@@ -30,6 +29,6 @@ mongoose
     console.log(e);
   });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Listening on port ${PORT}`);
 });
