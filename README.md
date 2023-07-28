@@ -69,3 +69,8 @@ $ flutter run
 
 * Clone the project and follow setup stps and run the app.
 * Create a new branch and add changes and create a PR for that change.
+
+## App Demo
+
+https://github.com/aak-301/Amazon-Clone/assets/76422079/8ab36e1c-977c-411c-acb4-2d65e750eda9
+
