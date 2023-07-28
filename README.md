@@ -72,5 +72,7 @@ $ flutter run
 
 ## App Demo
 
-https://github.com/aak-301/Amazon-Clone/assets/76422079/8ab36e1c-977c-411c-acb4-2d65e750eda9
+
+https://github.com/aak-301/Amazon-Clone/assets/76422079/4831f6d5-45d1-4193-b0a9-070b2977a84d
+
 
