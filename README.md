@@ -49,6 +49,15 @@ $ flutter run
 * **Deal of the Day** - Deal of the Day depends on the most rated product by users.
 * **Product Listing and Analytics(Admin)** - Admin can see the orders created on their product listed and als the analytics on the type of product he lists out.
 
+## My Learning 
+
+* How to create an api on node and connect it to futter.
+* A better approach for api error handling in flutter,
+* Image upload in cloudinary through flutter.
+* Payment integration in flutter.
+* Rating system in app.
+
+
 ## Future Scopes
 
 * Suggested Products
@@ -57,13 +66,6 @@ $ flutter run
 * Abetter approach for Deal of the Day product
 * Notification(Firebase) and Deeplinking(Branch.io)
 
-## My Learning 
-
-* How to create an api on node and connect it to futter.
-* A better approach for api error handling in flutter,
-* Image upload in cloudinary through flutter.
-* Payment integration in flutter.
-* Rating system in app.
 
 ## Contribution
 
@@ -74,5 +76,9 @@ $ flutter run
 
 
 https://github.com/aak-301/Amazon-Clone/assets/76422079/4831f6d5-45d1-4193-b0a9-070b2977a84d
+
+Gay Payment in App:
+
+<img src="https://github.com/aak-301/Amazon-Clone/assets/76422079/0213e6cb-056b-4d02-a735-d89c496d4ce5" width="150" height="300">
 
 
