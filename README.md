@@ -1,16 +1,71 @@
-# amazonclone
+# Amazon Clone
 
-A new Flutter project.
+Build a amazon clone using Flutter and Nodejs
 
-## Getting Started
+## Setup
 
-This project is a starting point for a Flutter application.
+- Backend
+```
+create a mongodb and a connection url in server/index.js
+$ cd server
+$ npm install
+$ npm run dev
+```
 
-A few resources to get you started if this is your first Flutter project:
+- Forntend
+```
+install flutter
+Add cloudinary cloudName, uploadPreset in lib/featues/admin/services/admin_services.dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+$ flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tools Used
+
+- Backend:
+    Node.Js
+    Express
+
+- Database:
+    MongoDb
+
+- Frontend:
+    Flutter
+
+- Hoting:
+    Vercel
+
+- CDN(for image upload):
+    Cloudinary
+
+
+## Features
+
+* **Role based Authentication** - Where one can register both as admin and a customer.
+* **Search Product** - A seamless experience for searching any produc.
+* **View and Rate Product** - You can see the product details and rate it depending on your view/experience.
+* **Order and Payment** - A product can be added to cart and you can use Gpay for checking out.
+* **Order Status** - Customer can get the update of their order in order section. Admin can updat on each step or a customers order.
+* **Deal of the Day** - Deal of the Day depends on the most rated product by users.
+* **Product Listing and Analytics(Admin)** - Admin can see the orders created on their product listed and als the analytics on the type of product he lists out.
+
+## Future Scopes
+
+* Suggested Products
+* A good review system and chat for QnA.
+* Converting a consumer to seller forth and back.
+* Abetter approach for Deal of the Day product
+* Notification(Firebase) and Deeplinking(Branch.io)
+
+## My Learning 
+
+* How to create an api on node and connect it to futter.
+* A better approach for api error handling in flutter,
+* Image upload in cloudinary through flutter.
+* Payment integration in flutter.
+* Rating system in app.
+
+## Contribution
+
+* Clone the project and follow setup stps and run the app.
+* Create a new branch and add changes and create a PR for that change.
