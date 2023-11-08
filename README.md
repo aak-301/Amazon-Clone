@@ -77,7 +77,7 @@ $ flutter run
 
 https://github.com/aak-301/Amazon-Clone/assets/76422079/4831f6d5-45d1-4193-b0a9-070b2977a84d
 
-Gay Payment in App:
+G-pay Payment in App:
 
 <img src="https://github.com/aak-301/Amazon-Clone/assets/76422079/0213e6cb-056b-4d02-a735-d89c496d4ce5" width="150" height="300">
 
